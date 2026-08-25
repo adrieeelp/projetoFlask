@@ -12,7 +12,7 @@ def home():
 def sobre():
     return render_template('/dashboard/sobre.html')
 
-@app.route('/dashboard/alunos')
+@app.route('/alunos')
 def lista_aluno():
     lista =[
         (1, "Ana Beatriz Silva", 20, "Teresina"),
@@ -28,7 +28,7 @@ def lista_aluno():
     ]
     return render_template('alunos/lista.html', lista=lista)
 
-@app.route('/dashboard/professores')
+@app.route('/professores')
 def lista_professor():
     lista =[
             (1, "Elienne Bacelar", "elienne.bacelar@escola.com", "ATIVIDADE DE EXTENSÃO IV"),
