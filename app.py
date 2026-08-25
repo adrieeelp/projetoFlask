@@ -6,15 +6,35 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('dashboard/index.html')
 
-@app.route('/sobre')
+@app.route('/dashboard/sobre')
 def sobre():
-    return render_template('sobre.html')
+    return render_template('/dashboard/sobre.html')
 
-@app.route('/ajuda')
+@app.route('/dashboard/alunos')
+def lista_aluno():
+    lista =[
+        (1, "Ana Beatriz Silva", 20, "Teresina"),
+        (2, "Carlos Eduardo Lima", 22, "Parnaiba"),
+        (3, "Mariana Souza", 19, "Picos"),
+        (4, "Rafael Oliveira", 23, "Floriano"),
+        (5, "Juliana Costa", 21, "Campo Maior"),
+        (6, "Pedro Henrique", 20, "Oeiras"),
+        (7, "Fernanda Gomes", 18, "Piripiri"),
+        (8, "Lucas Almeida", 22, "Altos"),
+        (9, "Bianca Rocha", 24, "Esperantina"),
+        (10, "Matheus Ribeiro", 19, "Barras"),
+    ]
+    return render_template('alunos/lista.html', lista=lista)
+
+@app.route('/dashboard/professores')
+def lista_professor():
+    return render_template('professores/lista.html')
+
+@app.route('/dashboard/ajuda')
 def ajuda():
-    return render_template('ajuda.html')
+    return render_template('/dashboard/ajuda.html')
 
 
 
