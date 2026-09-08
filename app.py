@@ -14,18 +14,12 @@ def sobre():
 
 @app.route('/alunos')
 def lista_aluno():
-    lista =[
-        (1, "Ana Beatriz Silva", 20, "Teresina"),
-        (2, "Carlos Eduardo Lima", 22, "Parnaiba"),
-        (3, "Mariana Souza", 19, "Picos"),
-        (4, "Rafael Oliveira", 23, "Floriano"),
-        (5, "Juliana Costa", 21, "Campo Maior"),
-        (6, "Pedro Henrique", 20, "Oeiras"),
-        (7, "Fernanda Gomes", 18, "Piripiri"),
-        (8, "Lucas Almeida", 22, "Altos"),
-        (9, "Bianca Rocha", 24, "Esperantina"),
-        (10, "Matheus Ribeiro", 19, "Barras"),
-    ]
+    DB_PATH = "banco_escola_pweb2" \
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, nome, idade, cidade FROM alunos")
+    lista = cursor.fetchall()
+    conn.close()
     return render_template('alunos/lista.html', lista=lista)
 
 @app.route('/professores')
