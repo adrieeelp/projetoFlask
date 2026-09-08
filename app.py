@@ -18,7 +18,7 @@ def lista_aluno():
     DB_PATH = "banco_escola_pweb2.db"
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("SELECT id, nome, idade, cidade FROM alunos")
+    cursor.execute("SELECT id, nome, idade, cidade FROM aluno")
     lista = cursor.fetchall()
     conn.close()
     return render_template('alunos/lista.html', lista=lista)
