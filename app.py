@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import sqlite3
 
 
 app = Flask(__name__)
@@ -14,7 +15,7 @@ def sobre():
 
 @app.route('/alunos')
 def lista_aluno():
-    DB_PATH = "banco_escola_pweb2" \
+    DB_PATH = "banco_escola_pweb2.db"
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT id, nome, idade, cidade FROM alunos")
