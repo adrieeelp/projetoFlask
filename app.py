@@ -33,6 +33,18 @@ def lista_professor():
     conn.close()
     return render_template('professores/lista.html', lista=lista)
 
+@app.route('/turmas')
+def lista_turma():
+    DB_PATH = "banco_escola_pweb2.db"
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("""select turma.id,turma.semestre,curso.nome_curso,professor.nome,professor.disciplina from turma
+                    join curso on curso.id=turma.curso_id
+                    join professor on professor.id=turma.professor_id""")
+    lista = cursor.fetchall()
+    conn.close()
+    return render_template('turmas/lista.html', lista=lista)
+
 @app.route('/dashboard/ajuda')
 def ajuda():
     return render_template('/dashboard/ajuda.html')
