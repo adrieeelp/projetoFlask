@@ -3,7 +3,7 @@ from dao.aluno_dao import AlunoDAO
 from dao.professor_dao import ProfessorDAO
 from dao.turmas_dao import TurmaDAO
 from dao.cursos_dao import CursoDAO
-
+from urllib.parse import unquote
 
 app = Flask(__name__)
 
@@ -67,17 +67,11 @@ def login_desafio():
     nascimento = request.form['nascimento']
     cpf = request.form['cpf']
     mae = request.form['mae']
-
-    return render_template('/desafio/dados.html', nome=nome, nascimento=nascimento, cpf=cpf, mae=mae, valor_recebido='Cadastro realizado com sucesso!')
+    return render_template('/desafio/dados.html', nome=nome, nascimento=nascimento, cpf=cpf, mae=mae)
 
 @app.route('/dashboard/contato')
 def contato():
     return render_template('/dashboard/contato.html')
-
-
-
-
-
 
 
 
