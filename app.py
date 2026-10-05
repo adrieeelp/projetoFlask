@@ -42,7 +42,8 @@ def lista_curso():
 
 @app.route('/saudacao1/<nome>')
 def saudacao1(nome):
-    return render_template('saudacao/saudacao.html', valor_recebido=nome)
+    nome_limpo = unquote(nome)
+    return render_template('saudacao/saudacao.html', valor_recebido=nome_limpo)
 
 @app.route('/saudacao2/')
 def saudacao2():
