@@ -1,0 +1,17 @@
+{% include 'dashboard/cabecalho.html' %}
+
+<h1 class="mb-4" >{{valor_recebido}}</h1>
+
+<form action="/login_desafio" method="post">
+    
+    <input type="text" name="nome" placeholder="Nome Completo"><br><br>
+    
+    <input type="text" name="nascimento" placeholder="Data de Nascimento"><br><br>
+    
+    <input type="text" name="cpf" placeholder="CPF"><br><br>
+    
+    <input type="text" name="mae" placeholder="Nome da Mãe"><br><br>
+
+    <button type="submit">Enviar</button>
+
+{% include '/dashboard/rodape.html' %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from dao.aluno_dao import AlunoDAO
 from dao.professor_dao import ProfessorDAO
 from dao.turmas_dao import TurmaDAO
@@ -40,9 +40,35 @@ def lista_curso():
     lista = dao.listar()
     return render_template('cursos/lista.html', lista=lista)
 
-@app.route('/dashboard/ajuda')
-def ajuda():
-    return render_template('/dashboard/ajuda.html')
+@app.route('/saudacao1/<nome>')
+def saudacao1(nome):
+    return render_template('saudacao/saudacao.html', valor_recebido=nome)
+
+@app.route('/saudacao2/')
+def saudacao2():
+    nome = request.args.get('nome')
+    return render_template('saudacao/saudacao.html', valor_recebido=nome)
+
+@app.route('/login', methods=['POST'])
+def login():
+    usuario = request.form['usuario']
+    senha = request.form['senha']
+    email = request.form['email']
+    dados = f"Usuário: {usuario}, Senha: '{senha}', Email: {email}"
+    return render_template('/saudacao/saudacao.html', valor_recebido=dados)
+
+@app.route('/desafio1/<nome>')
+def desafio1(nome):
+    return render_template('desafio/desafio1.html', valor_recebido=nome)
+
+@app.route('/login_desafio', methods=['POST'])
+def login_desafio():
+    nome = request.form['nome']
+    nascimento = request.form['nascimento']
+    cpf = request.form['cpf']
+    mae = request.form['mae']
+
+    return render_template('/desafio/dados.html', nome=nome, nascimento=nascimento, cpf=cpf, mae=mae, valor_recebido='Cadastro realizado com sucesso!')
 
 @app.route('/dashboard/contato')
 def contato():
