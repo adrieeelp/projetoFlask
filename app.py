@@ -5,6 +5,7 @@ from dao.turmas_dao import TurmaDAO
 from dao.cursos_dao import CursoDAO
 from urllib.parse import unquote
 
+
 app = Flask(__name__)
 
 
